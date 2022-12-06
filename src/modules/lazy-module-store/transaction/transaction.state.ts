@@ -1,27 +1,27 @@
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { IAbsencesClass } from '../../models';
+import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
+import {IModelClass} from "./i-model.class";
 
 /**
- * adaptateur des entités absences
+ * adaptateur
  */
-export const absencesAdapter: EntityAdapter<IAbsencesClass> = createEntityAdapter<IAbsencesClass>({
-  selectId: (model) => model.seq
+export const modelAdapter: EntityAdapter<IModelClass> = createEntityAdapter<IModelClass>({
+  selectId: (model) => model.id
 });
 
 /**
- * interface du state absences
+ * interface
  */
-export interface State extends EntityState<IAbsencesClass> {
+export interface State extends EntityState<IModelClass> {
   reload: boolean;
   loading: boolean;
 }
 
 /**
- * state initial des entités absences
+ * state initial
  */
 export const initialState: State = {
   reload: false,
   loading: true,
-  entities: absencesAdapter.getInitialState().entities,
-  ids: absencesAdapter.getInitialState().ids
+  entities: modelAdapter.getInitialState().entities,
+  ids: modelAdapter.getInitialState().ids
 };

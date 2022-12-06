@@ -1,5 +1,4 @@
-import { Action } from '@ngrx/store';
-import { IAbsencesClass, IChrCtxabsClass } from '../../models/index';
+import {Action} from '@ngrx/store';
 
 export const FETCH = '[TRANSACTION] Fetch';
 export const LOAD_ERROR = '[TRANSACTION] Load Error';
@@ -15,11 +14,6 @@ export const LOAD_SUCCESS = '[TRANSACTION] Load Success';
  */
 export class Fetch implements Action {
   readonly type = FETCH;
-  public payload: { contexte: IChrCtxabsClass };
-
-  constructor(contexte: IChrCtxabsClass) {
-    this.payload = { contexte };
-  }
 }
 
 /**
@@ -27,10 +21,8 @@ export class Fetch implements Action {
  */
 export class Upsert {
   readonly type = UPSERT;
-  public payload: { absence: IAbsencesClass };
 
-  public constructor(absence: IAbsencesClass) {
-    this.payload = { absence };
+  public constructor() {
   }
 }
 
@@ -63,35 +55,6 @@ export class EditSuccess implements Action {
  */
 export class Reset implements Action {
   readonly type = RESET;
-  public payload: { absences: IAbsencesClass[] };
-
-  public constructor(absences: IAbsencesClass[]) {
-    this.payload = { absences };
-  }
-}
-
-/**
- * store transaction des absences action VALID_ALL : validation globale
- */
-export class ValidAll implements Action {
-  readonly type = VALID_ALL;
-  public payload: { absences: IAbsencesClass[]; niveau: string | number; mail: boolean; envoiMail: string };
-
-  public constructor(absences: IAbsencesClass[], niveau: string | number, mail: boolean, envoiMail: string) {
-    this.payload = { absences, niveau, mail, envoiMail };
-  }
-}
-
-/**
- * rechargement après validation
- */
-export class Refresh implements Action {
-  readonly type = REFRESH;
-  public payload: { absences: IAbsencesClass[] };
-
-  constructor(absences: IAbsencesClass[]) {
-    this.payload = { absences };
-  }
 }
 
 /**
@@ -106,7 +69,5 @@ export class LoadSuccess implements Action {
   }
 }
 
-/**
- * export des actions store transaction des absences
- */
-export type actionabstransaction = Fetch | Upsert | EditSuccess | LoadError | Reset | ValidAll | Refresh | LoadSuccess;
+
+export type transaction = Fetch | Upsert | EditSuccess | LoadError | Reset | LoadSuccess;

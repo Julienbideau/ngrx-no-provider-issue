@@ -1,10 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { TransactionEffect } from './transaction.effect';
-import { TransactionReducer } from './transaction.reducer';
-import { ChrPipesTranslationModule } from 'src/modules/chronos-core/pipes';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {StoreModule} from '@ngrx/store';
+import {EffectsModule} from '@ngrx/effects';
+import {TransactionEffect} from './transaction.effect';
+import {TransactionReducer} from './transaction.reducer';
 
 /**
  * module du store de transaction des absences
@@ -15,10 +14,10 @@ import { ChrPipesTranslationModule } from 'src/modules/chronos-core/pipes';
 @NgModule({
   imports: [
     CommonModule,
-    ChrPipesTranslationModule,
     StoreModule.forFeature('transaction', TransactionReducer),
     EffectsModule.forFeature([TransactionEffect])
   ],
   providers: [TransactionEffect]
 })
-export class TransactionStoreModule {}
+export class TransactionStoreModule {
+}
